@@ -1,9 +1,24 @@
-import { Container } from 'semantic-ui-react';
+import {useCallback, useEffect, useState} from "react";
+import { Container, Loader } from 'semantic-ui-react';
 
-import { Board } from '../../components/';
-import data from './data';
+import { Board } from '../../entities/';
+import { columnsList } from "./sdk";
 
 const HomePage = () => {
+  const [columns, setColumns] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchColumns = useCallback(async () => {
+    const columns = await columnsList();
+    setColumns(columns);
+
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    fetchColumns();
+  }, [fetchColumns]);
+
   return (
     <div
       style={{
@@ -20,9 +35,13 @@ const HomePage = () => {
           padding: '0 24px'
         }}
       >
-        <Board
-          columns={data}
-        />
+        {loading ? (
+          <Loader active inline='centered' />
+        ) : (
+          <Board
+            columns={columns}
+          />
+        )}
       </Container>
     </div>
   );
