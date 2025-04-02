@@ -1,11 +1,24 @@
-import { useRoutes } from "react-router-dom";
+import {useRoutes} from "react-router-dom";
 
-import { Home } from "../../pages";
+import {PrivateRoute} from "../../components";
+import {
+  Home,
+  Login,
+  Register
+} from "../../pages"
 
 const routes = [
   {
     path: "/",
-    element: <Home />,
+    element: <PrivateRoute element={<Home/>}/>
+  },
+  {
+    path: "/login",
+    element: <Login/>
+  },
+  {
+    path: "/register",
+    element: <Register/>
   },
 ];
 

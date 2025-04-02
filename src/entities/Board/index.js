@@ -1,18 +1,18 @@
 import { Container, Header } from 'semantic-ui-react';
 
 import Column from '../Column';
-import './styles.css';
+import styles from './styles.module.css';
 
 const Board = ({ columns }) => {
   return (
-    <Container fluid className="container">
-      <div className="header">
-        <Header as="h1" className="header-title">
+    <Container fluid className={styles.container}>
+      <div className={styles.header}>
+        <Header as="h1" className={styles.headerTitle}>
           Kanban Dashboard
         </Header>
       </div>
 
-      <div className="board">
+      <div className={styles.board}>
         {columns.map((column) => (
           <Column
             key={column.id}
