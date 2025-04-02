@@ -1,14 +1,14 @@
 import Task from '../Task';
-import './styles.css';
+import styles from './styles.module.css';
 
 const Column = ({ title, tasks }) => {
   return (
-    <div className="column">
-      <div className="header">
+    <div className={styles.column}>
+      <div className={styles.header}>
         <span style={{ fontSize: '14px' }}>{title}</span>
-        <span className="count">{tasks.length}</span>
+        <span className={styles.count}>{tasks.length}</span>
       </div>
-      <div className="content">
+      <div className={styles.content}>
         {tasks.map(task => (
           <Task
             key={task.id}
