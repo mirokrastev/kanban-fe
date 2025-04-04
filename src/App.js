@@ -1,4 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
+import {ToastContainer} from "react-toastify";
 
 import {AuthProvider} from "./contexts/AuthContext";
 import Navbar from "./components/Navbar";
@@ -11,6 +12,10 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <AppRoutes />
+        <ToastContainer
+          closeOnClick
+          closeButton={false}
+        />
       </BrowserRouter>
     </AuthProvider>
   );

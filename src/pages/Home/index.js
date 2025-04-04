@@ -4,7 +4,7 @@ import { Container, Loader } from 'semantic-ui-react';
 import { Board } from '../../entities/';
 import { columnsList } from "./sdk";
 
-const HomePage = () => {
+const Home = () => {
   const [columns, setColumns] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -47,4 +47,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;

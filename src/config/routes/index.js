@@ -10,7 +10,7 @@ import {
 const routes = [
   {
     path: "/",
-    element: <PrivateRoute element={<Home/>}/>
+    element: <PrivateRoute element={<Home />}/>
   },
   {
     path: "/login",

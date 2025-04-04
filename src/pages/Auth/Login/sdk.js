@@ -1,4 +1,4 @@
-import {post} from "../../sdk";
+import {post} from "../../../sdk";
 
 export const login = async (data) => {
   const url = 'auth/login/';

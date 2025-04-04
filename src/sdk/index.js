@@ -13,17 +13,13 @@ export const get = async (url) => {
     },
   });
 
-  if (!response.ok) {
-    if (response.status === 401) {
-      // Handle unauthorized access
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
-      window.location.href = "/login";
-      throw new Error("Unauthorized");
-    }
-    throw new Error("Failed to fetch data");
+  if (!response.ok && response.status === 401) {
+    // Handle unauthorized access
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
   }
-  return await response.json();
+
+  return response;
 }
 
 export const post = async (url, body) => {
@@ -36,20 +32,15 @@ export const post = async (url, body) => {
       ...getAuthHeader(),
     },
   }
-
   const response = await fetch(fullUrl, data);
-  if (!response.ok) {
-    if (response.status === 401) {
-      // Handle unauthorized access
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
-      window.location.href = "/login";
-      throw new Error("Unauthorized");
-    }
-    throw new Error("Failed to post data");
+
+  if (!response.ok && response.status === 401) {
+    // Handle unauthorized access
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
   }
 
-  return await response.json();
+  return response;
 }
 
 export const logout = () => {
