@@ -1,19 +1,20 @@
 import {useCallback, useEffect, useState} from "react";
 import { Container, Loader } from 'semantic-ui-react';
+import { useParams } from 'react-router-dom';
 
 import { Board } from '../../entities/';
 import { columnsList } from "./sdk";
 
 const Home = () => {
+  const { boardId } = useParams();
   const [columns, setColumns] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchColumns = useCallback(async () => {
-    const columns = await columnsList();
+    const columns = await columnsList(boardId);
     setColumns(columns);
-
     setLoading(false);
-  }, []);
+  }, [boardId]);
 
   useEffect(() => {
     fetchColumns();
@@ -39,6 +40,7 @@ const Home = () => {
           <Loader active inline='centered' />
         ) : (
           <Board
+            boardId={boardId}
             columns={columns}
           />
         )}

@@ -5,6 +5,14 @@ const getAuthHeader = () => {
   return token ? { Authorization: `Bearer ${token}` } : {};
 };
 
+const checkAuth = (response) => {
+    // Handle unauthorized access
+  if (!response.ok && response.status === 401) {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+  }
+}
+
 export const get = async (url) => {
   const fullUrl = BASE_URL + url;
   const response = await fetch(fullUrl, {
@@ -13,11 +21,7 @@ export const get = async (url) => {
     },
   });
 
-  if (!response.ok && response.status === 401) {
-    // Handle unauthorized access
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-  }
+  checkAuth(response);
 
   return response;
 }
@@ -34,17 +38,39 @@ export const post = async (url, body) => {
   }
   const response = await fetch(fullUrl, data);
 
-  if (!response.ok && response.status === 401) {
-    // Handle unauthorized access
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-  }
+  checkAuth(response);
 
   return response;
 }
 
-export const logout = () => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("user");
-  window.location.href = "/login";
-};
+export const deleteRequest = async (url) => {
+  const fullUrl = BASE_URL + url;
+  const response = await fetch(fullUrl, {
+    method: "DELETE",
+    headers: {
+      ...getAuthHeader(),
+    },
+  });
+
+  checkAuth(response);
+
+  return response;
+}
+
+export const put = async (url, body) => {
+  const fullUrl = BASE_URL + url;
+  const data = {
+    method: "PUT",
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+      ...getAuthHeader(),
+    },
+  }
+
+  const response = await fetch(fullUrl, data);
+
+  checkAuth(response);
+
+  return response;
+}

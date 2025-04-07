@@ -19,7 +19,7 @@ const Navbar = () => {
     <nav className={styles.navbar}>
       <div className={styles.content}>
         <div className={styles.logo}>
-          <h1>Kanban Board</h1>
+          <h1 onClick={() => navigate('/boards')} style={{ cursor: 'pointer' }}>Kanban Board</h1>
         </div>
         <div className={styles.actions}>
           <button className={styles.logoutButton} onClick={handleLogout}>

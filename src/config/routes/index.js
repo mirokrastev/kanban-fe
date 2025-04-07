@@ -1,15 +1,24 @@
-import {useRoutes} from "react-router-dom";
+import {useRoutes, Navigate} from "react-router-dom";
 
 import {PrivateRoute} from "../../components";
 import {
   Home,
   Login,
-  Register
+  Register,
+  Boards
 } from "../../pages"
 
 const routes = [
   {
     path: "/",
+    element: <PrivateRoute element={<Navigate to="/boards" replace />}/>
+  },
+  {
+    path: "/boards",
+    element: <PrivateRoute element={<Boards />}/>
+  },
+  {
+    path: "/board/:boardId",
     element: <PrivateRoute element={<Home />}/>
   },
   {

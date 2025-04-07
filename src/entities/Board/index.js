@@ -1,9 +1,11 @@
+import { useCallback } from "react";
 import { Container, Header } from 'semantic-ui-react';
 
 import Column from '../Column';
+import CreateColumn from '../Column/CreateColumn';
 import styles from './styles.module.css';
 
-const Board = ({ columns }) => {
+const Board = ({ boardId, columns }) => {
   return (
     <Container fluid className={styles.container}>
       <div className={styles.header}>
@@ -17,9 +19,10 @@ const Board = ({ columns }) => {
           <Column
             key={column.id}
             title={column.title}
-            tasks={column.tasks}
+            tasks={column.cards}
           />
         ))}
+        <CreateColumn boardId={boardId} onSuccess={() => {}} />
       </div>
     </Container>
   );
