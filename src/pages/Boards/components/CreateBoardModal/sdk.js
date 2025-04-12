@@ -1,6 +1,6 @@
-import { post } from '../../../../sdk';
+import { post } from "../../../../sdk";
 
 export const createBoard = async (data) => {
-  const url = 'boards/';
+  const url = "boards/";
   return await post(url, data);
-}
+};

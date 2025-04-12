@@ -1,12 +1,12 @@
 .task {
-    background-color: white;
-    border-radius: 4px;
-    padding: 12px;
-    margin-bottom: 8px;
-    cursor: pointer;
-    transition: transform 0.2s;
+  background-color: white;
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
 .task:hover {
-    transform: translateY(-2px);
+  transform: translateY(-2px);
 }

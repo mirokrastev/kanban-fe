@@ -1,23 +1,24 @@
-import Task from '../Task';
-import CreateTask from '../Task/CreateTask';
+import Task from "../Task";
+import CreateTask from "../Task/CreateTask";
 
-import styles from './styles.module.css';
+import styles from "./styles.module.css";
 
 const Column = ({ boardId, columnId, title, tasks, refetchColumns }) => {
   return (
     <div className={styles.column}>
       <div className={styles.header}>
-        <span style={{ fontSize: '14px' }}>{title}</span>
+        <span style={{ fontSize: "14px" }}>{title}</span>
         <span className={styles.count}>{tasks.length}</span>
       </div>
       <div className={styles.content}>
-        {tasks.map(task => (
-          <Task
-            key={task.id}
-            task={task}
-          />
+        {tasks.map((task) => (
+          <Task key={task.id} task={task} />
         ))}
-        <CreateTask boardId={boardId} columnId={columnId} onSuccess={refetchColumns} />
+        <CreateTask
+          boardId={boardId}
+          columnId={columnId}
+          onSuccess={refetchColumns}
+        />
       </div>
     </div>
   );

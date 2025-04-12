@@ -1,4 +1,4 @@
-import {Container} from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 
 const Page = ({ children, style, className }) => {
   return (
@@ -6,6 +6,6 @@ const Page = ({ children, style, className }) => {
       {children}
     </Container>
   );
-}
+};
 
 export default Page;

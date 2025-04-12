@@ -1,14 +1,14 @@
-import {ErrorMessage, Formik} from "formik";
-import { Form, Input } from 'formik-semantic-ui-react';
-import {Button, Message, Header, Segment} from 'semantic-ui-react';
-import { useNavigate, Link } from 'react-router-dom';
-import {toast} from 'react-toastify';
+import { ErrorMessage, Formik } from "formik";
+import { Form, Input } from "formik-semantic-ui-react";
+import { Button, Message, Header, Segment } from "semantic-ui-react";
+import { useNavigate, Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
-import { login } from './sdk';
-import { useAuth } from '../../../contexts/AuthContext';
+import { login } from "./sdk";
+import { useAuth } from "../../../contexts/AuthContext";
 import { LoginSchema } from "./schema";
 
-import styles from '../styles.module.css';
+import styles from "../styles.module.css";
 
 const Login = () => {
   const { setUser } = useAuth();
@@ -21,19 +21,19 @@ const Login = () => {
     const data = await response.json();
 
     if (!response.ok) {
-      setFieldError('password', 'Invalid username or password');
+      setFieldError("password", "Invalid username or password");
     } else {
-      localStorage.setItem('token', data.access);
-      setUser({isAuthenticated: true});
-      toast.success('Login successful');
-      navigate('/');
+      localStorage.setItem("token", data.access);
+      setUser({ isAuthenticated: true });
+      toast.success("Login successful");
+      navigate("/");
     }
   };
 
   const initialValues = {
-    username: '',
-    password: ''
-  }
+    username: "",
+    password: "",
+  };
 
   return (
     <div className={styles.container}>
@@ -76,13 +76,15 @@ const Login = () => {
                 >
                   Sign In
                 </Button>
-
               </Segment>
             </Form>
           )}
         </Formik>
         <Message className={styles.message}>
-          New to us? <Link to="/register" className={styles.link}>Sign up</Link>
+          New to us?{" "}
+          <Link to="/register" className={styles.link}>
+            Sign up
+          </Link>
         </Message>
       </div>
     </div>

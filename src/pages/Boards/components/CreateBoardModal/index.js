@@ -1,28 +1,27 @@
-import {useState} from "react";
-import {toast} from "react-toastify";
-import {Button, Modal} from "semantic-ui-react";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import { Button, Modal } from "semantic-ui-react";
 
-import { createBoard } from './sdk';
+import { createBoard } from "./sdk";
 
-import {Form} from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
 
 const CreateBoardModal = ({ onSuccess }) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [boardName, setBoardName] = useState('');
+  const [boardName, setBoardName] = useState("");
 
   const handleSubmit = async () => {
-    const response = await createBoard({ name: boardName});
+    const response = await createBoard({ name: boardName });
 
     if (response.status === 201) {
       onSuccess();
       setModalOpen(false);
-      setBoardName('');
-    }
-    else {
+      setBoardName("");
+    } else {
       const error = await response.json();
       toast.error(error);
     }
-  }
+  };
 
   return (
     <Modal
@@ -34,10 +33,10 @@ const CreateBoardModal = ({ onSuccess }) => {
         <div
           onClick={() => setModalOpen(true)}
           style={{
-            cursor: 'pointer',
-            padding: '20px',
-            border: '2px black dashed',
-            textAlign: 'center',
+            cursor: "pointer",
+            padding: "20px",
+            border: "2px black dashed",
+            textAlign: "center",
           }}
         >
           Create a new Board

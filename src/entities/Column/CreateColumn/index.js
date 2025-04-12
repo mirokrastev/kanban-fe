@@ -1,21 +1,20 @@
-import {useState} from "react";
-import {Button, Form, Modal} from "semantic-ui-react";
-import {createColumn} from "./sdk";
-import {toast} from "react-toastify";
+import { useState } from "react";
+import { Button, Form, Modal } from "semantic-ui-react";
+import { createColumn } from "./sdk";
+import { toast } from "react-toastify";
 
 const CreateColumn = ({ boardId, onSuccess }) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [columnName, setColumnName] = useState('');
+  const [columnName, setColumnName] = useState("");
 
-  const handleSubmit =  async () => {
-    const response = await createColumn(boardId, {name: columnName});
+  const handleSubmit = async () => {
+    const response = await createColumn(boardId, { name: columnName });
 
     if (response.status === 201) {
       setModalOpen(false);
-      setColumnName('');
+      setColumnName("");
       onSuccess();
-    }
-    else {
+    } else {
       const error = await response.json();
       toast.error(error);
     }
@@ -30,10 +29,10 @@ const CreateColumn = ({ boardId, onSuccess }) => {
         <div
           onClick={() => setModalOpen(true)}
           style={{
-            cursor: 'pointer',
-            padding: '20px',
-            border: '2px black dashed',
-            textAlign: 'center',
+            cursor: "pointer",
+            padding: "20px",
+            border: "2px black dashed",
+            textAlign: "center",
           }}
         >
           Create Column
@@ -53,15 +52,12 @@ const CreateColumn = ({ boardId, onSuccess }) => {
       </Modal.Content>
       <Modal.Actions>
         <Button onClick={() => setModalOpen(false)}>Close</Button>
-        <Button
-          primary
-          onClick={handleSubmit}
-        >
+        <Button primary onClick={handleSubmit}>
           Create
         </Button>
       </Modal.Actions>
     </Modal>
-  )
+  );
 };
 
 export default CreateColumn;

@@ -1,6 +1,6 @@
-import { get } from '../../sdk';
+import { get } from "../../sdk";
 
 export const boardsList = async () => {
-  const url = 'boards/';
+  const url = "boards/";
   return await get(url);
-}
+};

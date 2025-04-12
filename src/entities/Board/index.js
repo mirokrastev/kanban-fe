@@ -1,15 +1,13 @@
-import { Container, Header } from 'semantic-ui-react';
+import { Header } from "semantic-ui-react";
 
-import Column from '../Column';
-import CreateColumn from '../Column/CreateColumn';
-import styles from './styles.module.css';
+import Column from "../Column";
+import CreateColumn from "../Column/CreateColumn";
+import styles from "./styles.module.css";
 
 const Board = ({ boardId, columns, columnsRefetch }) => {
   return (
     <>
-      <Header as="h1">
-        Kanban Dashboard
-      </Header>
+      <Header as="h1">Kanban Dashboard</Header>
 
       <div className={styles.board}>
         <Header as="h3"></Header>

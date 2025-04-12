@@ -1,38 +1,33 @@
-import {useRoutes, Navigate} from "react-router-dom";
+import { useRoutes, Navigate } from "react-router-dom";
 
-import {PrivateRoute} from "../components";
-import {
-  KanbanBoard,
-  Login,
-  Register,
-  Boards
-} from "../pages"
+import { PrivateRoute } from "../components";
+import { KanbanBoard, Login, Register, Boards } from "../pages";
 
 const routes = [
   {
     path: "/",
-    element: <PrivateRoute element={<Navigate to="/boards" replace />}/>
+    element: <PrivateRoute element={<Navigate to="/boards" replace />} />,
   },
   {
     path: "/boards",
-    element: <PrivateRoute element={<Boards />}/>
+    element: <PrivateRoute element={<Boards />} />,
   },
   {
     path: "/boards/:boardId",
-    element: <PrivateRoute element={<KanbanBoard />}/>
+    element: <PrivateRoute element={<KanbanBoard />} />,
   },
   {
     path: "/login",
-    element: <Login/>
+    element: <Login />,
   },
   {
     path: "/register",
-    element: <Register/>
+    element: <Register />,
   },
 ];
 
 const AppRoutes = () => {
   return useRoutes(routes);
-}
+};
 
 export default AppRoutes;

@@ -1,23 +1,22 @@
-import { useState } from 'react';
-import styles from './styles.module.css';
-import {createTask} from "./sdk";
-import {toast} from "react-toastify";
+import { useState } from "react";
+import styles from "./styles.module.css";
+import { createTask } from "./sdk";
+import { toast } from "react-toastify";
 
 const CreateTask = ({ boardId, columnId, onSuccess }) => {
   const [isInputVisible, setIsInputVisible] = useState(false);
-  const [taskTitle, setTaskTitle] = useState('');
+  const [taskTitle, setTaskTitle] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    const response = await createTask(boardId, columnId, { name: taskTitle});
-    
+
+    const response = await createTask(boardId, columnId, { name: taskTitle });
+
     if (response.status === 201) {
       setIsInputVisible(false);
-      setTaskTitle('');
+      setTaskTitle("");
       onSuccess();
-    }
-    else {
+    } else {
       const error = await response.json();
       toast.error(error);
     }
@@ -25,7 +24,7 @@ const CreateTask = ({ boardId, columnId, onSuccess }) => {
 
   if (!isInputVisible) {
     return (
-      <button 
+      <button
         className={styles.addCardButton}
         onClick={() => setIsInputVisible(true)}
       >
@@ -48,12 +47,12 @@ const CreateTask = ({ boardId, columnId, onSuccess }) => {
         <button type="submit" className={styles.submitButton}>
           Add card
         </button>
-        <button 
-          type="button" 
+        <button
+          type="button"
           className={styles.cancelButton}
           onClick={() => {
             setIsInputVisible(false);
-            setTaskTitle('');
+            setTaskTitle("");
           }}
         >
           ×

@@ -11,7 +11,7 @@ const checkAuth = (response) => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
   }
-}
+};
 
 export const get = async (url) => {
   const fullUrl = BASE_URL + url;
@@ -24,7 +24,7 @@ export const get = async (url) => {
   checkAuth(response);
 
   return response;
-}
+};
 
 export const post = async (url, body) => {
   const fullUrl = BASE_URL + url;
@@ -35,13 +35,13 @@ export const post = async (url, body) => {
       "Content-Type": "application/json",
       ...getAuthHeader(),
     },
-  }
+  };
   const response = await fetch(fullUrl, data);
 
   checkAuth(response);
 
   return response;
-}
+};
 
 export const deleteRequest = async (url) => {
   const fullUrl = BASE_URL + url;
@@ -55,7 +55,7 @@ export const deleteRequest = async (url) => {
   checkAuth(response);
 
   return response;
-}
+};
 
 export const put = async (url, body) => {
   const fullUrl = BASE_URL + url;
@@ -66,11 +66,11 @@ export const put = async (url, body) => {
       "Content-Type": "application/json",
       ...getAuthHeader(),
     },
-  }
+  };
 
   const response = await fetch(fullUrl, data);
 
   checkAuth(response);
 
   return response;
-}
+};

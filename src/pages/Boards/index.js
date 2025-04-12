@@ -1,12 +1,12 @@
-import {useState, useEffect, useCallback} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
-import {CreateBoardModal, DeleteBoardModal} from './components';
-import {boardsList} from "./sdk";
+import { CreateBoardModal, DeleteBoardModal } from "./components";
+import { boardsList } from "./sdk";
 
-import styles from './styles.module.css';
-import {Dropdown, Header} from "semantic-ui-react";
-import {Page} from "../../components";
+import styles from "./styles.module.css";
+import { Dropdown, Header } from "semantic-ui-react";
+import { Page } from "../../components";
 
 const Boards = () => {
   const [boards, setBoards] = useState([]);
@@ -16,7 +16,7 @@ const Boards = () => {
   const fetchBoards = useCallback(async () => {
     const response = await boardsList();
     const data = await response.json();
-    
+
     setBoards(data);
     setIsLoading(false);
   }, [setBoards, setIsLoading]);
@@ -25,7 +25,7 @@ const Boards = () => {
     fetchBoards();
   }, [fetchBoards]);
 
-  const handleBoardClick = boardId => navigate(`/boards/${boardId}`);
+  const handleBoardClick = (boardId) => navigate(`/boards/${boardId}`);
 
   if (isLoading) {
     return <div className={styles.boardsContainer}>Loading...</div>;
@@ -44,10 +44,10 @@ const Boards = () => {
             <div className={styles.boardHeader}>
               <h3 className={styles.boardTitle}>{board.name}</h3>
               <Dropdown
-              icon="ellipsis vertical"
-              direction="left"
-              pointing="top right"
-              className="icon"
+                icon="ellipsis vertical"
+                direction="left"
+                pointing="top right"
+                className="icon"
               >
                 <Dropdown.Menu>
                   {/*TODO: Implement*/}
@@ -100,4 +100,4 @@ const Boards = () => {
   // );
 };
 
-export default Boards; 
+export default Boards;

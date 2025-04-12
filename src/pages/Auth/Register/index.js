@@ -1,13 +1,13 @@
-import {ErrorMessage, Formik} from "formik";
-import { Form, Input } from 'formik-semantic-ui-react';
-import {useNavigate, Link} from "react-router-dom";
-import {Button, Message, Header, Segment} from 'semantic-ui-react';
-import {toast} from "react-toastify";
+import { ErrorMessage, Formik } from "formik";
+import { Form, Input } from "formik-semantic-ui-react";
+import { useNavigate, Link } from "react-router-dom";
+import { Button, Message, Header, Segment } from "semantic-ui-react";
+import { toast } from "react-toastify";
 
-import {register as registerSdk} from './sdk';
-import {RegisterSchema} from "./schema";
+import { register as registerSdk } from "./sdk";
+import { RegisterSchema } from "./schema";
 
-import styles from '../styles.module.css';
+import styles from "../styles.module.css";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -17,17 +17,17 @@ const Register = () => {
 
     const response = await registerSdk(data);
     if (response.ok) {
-      toast.success('Account created successfully');
-      navigate('/login');
+      toast.success("Account created successfully");
+      navigate("/login");
     }
     setErrors(response);
   };
 
   const initialValues = {
-    first_name: '',
-    last_name: '',
-    username: '',
-    email: '',
+    first_name: "",
+    last_name: "",
+    username: "",
+    email: "",
   };
 
   return (
@@ -115,11 +115,14 @@ const Register = () => {
           )}
         </Formik>
         <Message className={styles.message}>
-          Already have an account? <Link to="/login" className={styles.link}>Sign in</Link>
+          Already have an account?{" "}
+          <Link to="/login" className={styles.link}>
+            Sign in
+          </Link>
         </Message>
       </div>
     </div>
   );
 };
 
-export default Register; 
+export default Register;

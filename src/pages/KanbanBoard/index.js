@@ -1,9 +1,9 @@
-import { Container, Loader } from 'semantic-ui-react';
-import { useParams } from 'react-router-dom';
+import { Loader } from "semantic-ui-react";
+import { useParams } from "react-router-dom";
 
-import { Board } from '../../entities/';
-import {useFetchColumnsHook} from "../../hooks";
-import {Page} from "../../components";
+import { Board } from "../../entities/";
+import { useFetchColumnsHook } from "../../hooks";
+import { Page } from "../../components";
 
 const KanbanBoard = () => {
   const { boardId } = useParams();
@@ -13,14 +13,10 @@ const KanbanBoard = () => {
   return (
     <Page>
       {loading ? (
-          <Loader active inline='centered' />
-        ) : (
-          <Board
-            boardId={boardId}
-            columns={columns}
-            columnsRefetch={refetch}
-          />
-        )}
+        <Loader active inline="centered" />
+      ) : (
+        <Board boardId={boardId} columns={columns} columnsRefetch={refetch} />
+      )}
     </Page>
   );
 };
