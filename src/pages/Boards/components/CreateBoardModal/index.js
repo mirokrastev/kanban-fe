@@ -6,7 +6,7 @@ import { createBoard } from './sdk';
 
 import {Form} from "semantic-ui-react";
 
-const CreateBoard = ({ onSuccess }) => {
+const CreateBoardModal = ({ onSuccess }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [boardName, setBoardName] = useState('');
 
@@ -69,4 +69,4 @@ const CreateBoard = ({ onSuccess }) => {
   );
 };
 
-export default CreateBoard;
+export default CreateBoardModal;

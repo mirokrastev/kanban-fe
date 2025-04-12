@@ -10,25 +10,3 @@
 .task:hover {
     transform: translateY(-2px);
 }
-
-.description {
-    font-size: 12px;
-    color: #6c757d;
-    margin-bottom: 8px;
-}
-
-.meta {
-    display: flex;
-    gap: 12px;
-    font-size: 12px;
-    color: #6c757d;
-}
-
-.label {
-    background-color: #e2e4e9;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 11px;
-    display: inline-block;
-    margin-top: 10px;
-}

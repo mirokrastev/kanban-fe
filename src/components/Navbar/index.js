@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
+import {Button, Header, Menu} from "semantic-ui-react";
 
 import { useAuth } from '../../contexts/AuthContext';
-import styles from './styles.module.css';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -13,22 +13,24 @@ const Navbar = () => {
     navigate('/');
   };
 
-  if (!user)
-    return null;
+  if (!user) return null;
+
   return (
-    <nav className={styles.navbar}>
-      <div className={styles.content}>
-        <div className={styles.logo}>
-          <h1 onClick={() => navigate('/boards')} style={{ cursor: 'pointer' }}>Kanban Board</h1>
-        </div>
-        <div className={styles.actions}>
-          <button className={styles.logoutButton} onClick={handleLogout}>
+    <Menu borderless>
+      <Menu.Item header onClick={() => navigate('/boards')}>
+        <Header as="h2" style={{ cursor: 'pointer', margin: 0 }}>
+          Kanban
+        </Header>
+      </Menu.Item>
+      <Menu.Menu position="right">
+        <Menu.Item>
+          <Button negative onClick={handleLogout}>
             Logout
-          </button>
-        </div>
-      </div>
-    </nav>
+          </Button>
+        </Menu.Item>
+      </Menu.Menu>
+    </Menu>
   );
 };
 
-export default Navbar; 
+export default Navbar;

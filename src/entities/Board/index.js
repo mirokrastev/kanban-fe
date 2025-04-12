@@ -1,30 +1,31 @@
-import { useCallback } from "react";
 import { Container, Header } from 'semantic-ui-react';
 
 import Column from '../Column';
 import CreateColumn from '../Column/CreateColumn';
 import styles from './styles.module.css';
 
-const Board = ({ boardId, columns }) => {
+const Board = ({ boardId, columns, columnsRefetch }) => {
   return (
-    <Container fluid className={styles.container}>
-      <div className={styles.header}>
-        <Header as="h1" className={styles.headerTitle}>
-          Kanban Dashboard
-        </Header>
-      </div>
+    <>
+      <Header as="h1">
+        Kanban Dashboard
+      </Header>
 
       <div className={styles.board}>
+        <Header as="h3"></Header>
         {columns.map((column) => (
           <Column
             key={column.id}
+            boardId={boardId}
+            columnId={column.id}
             title={column.title}
             tasks={column.cards}
+            refetchColumns={columnsRefetch}
           />
         ))}
-        <CreateColumn boardId={boardId} onSuccess={() => {}} />
+        <CreateColumn boardId={boardId} onSuccess={columnsRefetch} />
       </div>
-    </Container>
+    </>
   );
 };
 

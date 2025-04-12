@@ -3,7 +3,7 @@ import {deleteBoard} from "./sdk";
 import {toast} from "react-toastify";
 import {useState} from "react";
 
-const DeleteBoard = ({ board, onSuccess }) => {
+const DeleteBoardModal = ({ board, onSuccess }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleDelete = async () => {
@@ -25,9 +25,12 @@ const DeleteBoard = ({ board, onSuccess }) => {
       size="mini"
       closeIcon
       trigger={
-        <Button color="red" size="mini" onClick={() => setModalOpen(true)}>
-         x
-        </Button>
+        <span // Ensure it's inline to work nicely in Dropdown.Item
+          style={{ color: "red", cursor: "pointer" }}
+          onClick={() => setModalOpen(true)}
+        >
+          Delete
+        </span>
       }
     >
       <Header icon="trash" content="Delete Board?" />
@@ -47,4 +50,4 @@ const DeleteBoard = ({ board, onSuccess }) => {
   )
 }
 
-export default DeleteBoard;
+export default DeleteBoardModal;

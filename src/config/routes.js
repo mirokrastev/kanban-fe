@@ -1,12 +1,12 @@
 import {useRoutes, Navigate} from "react-router-dom";
 
-import {PrivateRoute} from "../../components";
+import {PrivateRoute} from "../components";
 import {
-  Home,
+  KanbanBoard,
   Login,
   Register,
   Boards
-} from "../../pages"
+} from "../pages"
 
 const routes = [
   {
@@ -18,8 +18,8 @@ const routes = [
     element: <PrivateRoute element={<Boards />}/>
   },
   {
-    path: "/board/:boardId",
-    element: <PrivateRoute element={<Home />}/>
+    path: "/boards/:boardId",
+    element: <PrivateRoute element={<KanbanBoard />}/>
   },
   {
     path: "/login",

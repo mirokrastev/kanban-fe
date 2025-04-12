@@ -6,7 +6,7 @@ const getAuthHeader = () => {
 };
 
 const checkAuth = (response) => {
-    // Handle unauthorized access
+  // Handle unauthorized access
   if (!response.ok && response.status === 401) {
     localStorage.removeItem("token");
     localStorage.removeItem("user");

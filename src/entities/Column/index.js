@@ -1,7 +1,9 @@
 import Task from '../Task';
+import CreateTask from '../Task/CreateTask';
+
 import styles from './styles.module.css';
 
-const Column = ({ title, tasks }) => {
+const Column = ({ boardId, columnId, title, tasks, refetchColumns }) => {
   return (
     <div className={styles.column}>
       <div className={styles.header}>
@@ -15,6 +17,7 @@ const Column = ({ title, tasks }) => {
             task={task}
           />
         ))}
+        <CreateTask boardId={boardId} columnId={columnId} onSuccess={refetchColumns} />
       </div>
     </div>
   );
