@@ -1,15 +1,28 @@
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import { Button, Header, Menu } from "semantic-ui-react";
 
 import { useAuth } from "../../contexts/AuthContext";
+import {useBoard} from "../../contexts/BoardContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const { user, setUser } = useAuth();
+  const { boardId, setBoardId } = useBoard();
+
+  const handleNavigation = () => {
+    if (location.pathname.startsWith("/boards/")) {
+      navigate("/boards/");
+    } else {
+      navigate(`/boards/${boardId}`);
+    }
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     setUser(null);
+    setBoardId(null);
     navigate("/");
   };
 
@@ -17,7 +30,7 @@ const Navbar = () => {
 
   return (
     <Menu borderless>
-      <Menu.Item header onClick={() => navigate("/boards")}>
+      <Menu.Item header onClick={handleNavigation}>
         <Header as="h2" style={{ cursor: "pointer", margin: 0 }}>
           Kanban
         </Header>

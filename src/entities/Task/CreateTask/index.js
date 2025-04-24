@@ -3,14 +3,14 @@ import styles from "./styles.module.css";
 import { createTask } from "./sdk";
 import { toast } from "react-toastify";
 
-const CreateTask = ({ boardId, columnId, onSuccess }) => {
+const CreateTask = ({ columnId, onSuccess }) => {
   const [isInputVisible, setIsInputVisible] = useState(false);
   const [taskTitle, setTaskTitle] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await createTask(boardId, columnId, { name: taskTitle });
+    const response = await createTask({ name: taskTitle, column_id: columnId });
 
     if (response.status === 201) {
       setIsInputVisible(false);

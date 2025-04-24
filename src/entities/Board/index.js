@@ -14,7 +14,6 @@ const Board = ({ boardId, columns, columnsRefetch }) => {
         {columns.map((column) => (
           <Column
             key={column.id}
-            boardId={boardId}
             columnId={column.id}
             title={column.name}
             tasks={column.cards}

@@ -1,7 +1,7 @@
 import { post } from "../../../sdk";
 
-export const createTask = async (boardId, columnId, data) => {
-  const url = `boards/${boardId}/columns/${columnId}/cards/?short=true`;
+export const createTask = async (data) => {
+  const url = `cards/`;
 
   return await post(url, data);
 };

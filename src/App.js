@@ -4,15 +4,18 @@ import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "./contexts/AuthContext";
 import Navbar from "./components/Navbar";
 import AppRoutes from "./config/routes";
+import {BoardProvider} from "./contexts/BoardContext";
 
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Navbar />
-        <AppRoutes />
-        <ToastContainer closeOnClick closeButton={false} />
-      </BrowserRouter>
+      <BoardProvider>
+        <BrowserRouter>
+          <Navbar />
+          <AppRoutes />
+          <ToastContainer closeOnClick closeButton={false} />
+        </BrowserRouter>
+      </BoardProvider>
     </AuthProvider>
   );
 }
