@@ -13,7 +13,7 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <AppRoutes />
-          <ToastContainer closeOnClick closeButton={false} />
+          <ToastContainer closeOnClick closeButton={false} pauseOnHover={false} />
         </BrowserRouter>
       </BoardProvider>
     </AuthProvider>

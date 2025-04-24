@@ -1,7 +1,7 @@
-import { deleteRequest } from "../../../../sdk";
+import { _delete } from "../../../../sdk";
 
 export const deleteBoard = async (id) => {
   const url = `boards/${id}/`;
 
-  return await deleteRequest(url);
+  return await _delete(url);
 };

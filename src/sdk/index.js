@@ -43,7 +43,7 @@ export const post = async (url, body) => {
   return response;
 };
 
-export const deleteRequest = async (url) => {
+export const _delete = async (url) => {
   const fullUrl = BASE_URL + url;
   const response = await fetch(fullUrl, {
     method: "DELETE",
