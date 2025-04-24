@@ -14,9 +14,9 @@ const CreateBoardModal = ({ onSuccess }) => {
     const response = await createBoard({ name: boardName });
 
     if (response.status === 201) {
-      onSuccess();
       setModalOpen(false);
       setBoardName("");
+      onSuccess();
     } else {
       const error = await response.json();
       toast.error(error);

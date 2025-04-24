@@ -6,15 +6,14 @@
   padding: 8px;
   display: flex;
   flex-direction: column;
+  margin-right: 20px;
 }
 
 .header {
   padding: 8px;
-  font-weight: 500;
   color: #5a5a66;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .count {

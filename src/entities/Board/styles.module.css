@@ -1,5 +1,5 @@
 .board {
   display: flex;
-  gap: 24px;
+  overflow-x: auto;
   min-height: calc(85vh);
 }

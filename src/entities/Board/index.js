@@ -16,7 +16,7 @@ const Board = ({ boardId, columns, columnsRefetch }) => {
             key={column.id}
             boardId={boardId}
             columnId={column.id}
-            title={column.title}
+            title={column.name}
             tasks={column.cards}
             refetchColumns={columnsRefetch}
           />

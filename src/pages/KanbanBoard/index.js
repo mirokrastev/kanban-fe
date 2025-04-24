@@ -6,16 +6,16 @@ import { useFetchColumnsHook } from "../../hooks";
 import { Page } from "../../components";
 
 const KanbanBoard = () => {
-  const { boardId } = useParams();
+  const { id } = useParams();
 
-  const { columns, loading, refetch } = useFetchColumnsHook(boardId);
+  const { columns, loading, refetch } = useFetchColumnsHook(id);
 
   return (
     <Page>
       {loading ? (
         <Loader active inline="centered" />
       ) : (
-        <Board boardId={boardId} columns={columns} columnsRefetch={refetch} />
+        <Board boardId={id} columns={columns} columnsRefetch={refetch} />
       )}
     </Page>
   );
