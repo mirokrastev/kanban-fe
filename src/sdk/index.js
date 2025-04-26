@@ -74,3 +74,21 @@ export const put = async (url, body) => {
 
   return response;
 };
+
+export const patch = async (url, body) => {
+  const fullUrl = BASE_URL + url;
+  const data = {
+    method: "PATCH",
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+      ...getAuthHeader(),
+    },
+  };
+
+  const response = await fetch(fullUrl, data);
+
+  checkAuth(response);
+
+  return response;
+};

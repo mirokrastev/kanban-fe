@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { CreateBoardModal, DeleteBoardModal } from "./components";
 import { boardsList } from "./sdk";
 
-import { Dropdown, Header } from "semantic-ui-react";
-import { Page } from "../../components";
+import {Dropdown, Header} from "semantic-ui-react";
+import {Page, LoadingPage} from "../../components";
 import {useBoard} from "../../contexts/BoardContext";
+import EditBoardModal from "./components/EditBoardModal";
 
 import styles from "./styles.module.css";
 
@@ -34,7 +35,7 @@ const Boards = () => {
   }
 
   if (isLoading) {
-    return <div className={styles.boardsContainer}>Loading...</div>;
+    return <LoadingPage />
   }
 
   return (
@@ -48,15 +49,16 @@ const Boards = () => {
             onClick={() => handleBoardClick(board.id)}
           >
             <div className={styles.boardHeader}>
-              <h3 className={styles.boardTitle}>{board.name}</h3>
+              <h3 className={styles.boardTitle}>{board.title}</h3>
               <Dropdown
                 icon="ellipsis vertical"
                 direction="left"
                 pointing="top right"
-                className="icon"
               >
                 <Dropdown.Menu>
-                  <Dropdown.Item>Edit</Dropdown.Item>
+                  <Dropdown.Item>
+                    <EditBoardModal board={board} onSuccess={fetchBoards} />
+                  </Dropdown.Item>
                   <Dropdown.Item>
                     <DeleteBoardModal board={board} onSuccess={fetchBoards} />
                   </Dropdown.Item>

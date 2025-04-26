@@ -1,8 +1,8 @@
 import {useNavigate, useParams} from "react-router-dom";
-import {Button, Header, Loader, Segment} from "semantic-ui-react";
+import {Button, Header, Segment} from "semantic-ui-react";
 import {toast} from "react-toastify";
 
-import {Page} from "../../../components";
+import {Page, LoadingPage} from "../../../components";
 import {useFetchCardHook} from "../../../hooks";
 import {useBoard} from "../../../contexts/BoardContext";
 import {cardDelete} from "./sdk";
@@ -27,16 +27,12 @@ const CardDetail = () => {
   };
 
   if (loading) {
-    return (
-      <Page>
-        <Loader active inline="centered" />
-      </Page>
-    );
+    return <LoadingPage />
   }
 
   return (
     <Page style={{ width: "25%" }}>
-      <Header as="h1" style={{ wordWrap: "break-word" }}>{card.name}</Header>
+      <Header as="h1" style={{ wordWrap: "break-word" }}>{card.title}</Header>
       <Segment>
         <p>
           <strong>Description:</strong> {card.description || "N/A"}

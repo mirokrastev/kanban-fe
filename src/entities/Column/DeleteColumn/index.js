@@ -1,13 +1,16 @@
-import { Button, Header, Icon, Modal } from "semantic-ui-react";
-import { deleteBoard } from "./sdk";
-import { toast } from "react-toastify";
-import { useState } from "react";
+import {useState} from "react";
+import {Button, Icon, Modal} from "semantic-ui-react";
+import {toast} from "react-toastify";
 
-const DeleteBoardModal = ({ board, onSuccess }) => {
+import {deleteColumn} from "./sdk";
+import {useBoard} from "../../../contexts/BoardContext";
+
+export const DeleteColumn = ({ column, onSuccess }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const { boardId } = useBoard();
 
   const handleDelete = async () => {
-    const response = await deleteBoard(board.id);
+    const response = await deleteColumn(boardId, column.id);
 
     if (!response.ok) {
       const error = await response.json();
@@ -32,12 +35,9 @@ const DeleteBoardModal = ({ board, onSuccess }) => {
         </div>
       }
     >
-      <Header icon="trash" content="Delete Board?" />
+      <Modal.Header icon="trash" content="Delete Column?" />
       <Modal.Content>
-        <p>
-          Are you sure you want to delete this board? This action cannot be
-          undone.
-        </p>
+        <p>Are you sure you want to delete this column? This action cannot be undone.</p>
       </Modal.Content>
       <Modal.Actions>
         <Button color="grey" onClick={() => setModalOpen(false)}>
@@ -52,4 +52,4 @@ const DeleteBoardModal = ({ board, onSuccess }) => {
   );
 };
 
-export default DeleteBoardModal;
+export default DeleteColumn;

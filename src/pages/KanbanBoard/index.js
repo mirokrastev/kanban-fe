@@ -1,9 +1,8 @@
-import { Loader } from "semantic-ui-react";
 import { useParams } from "react-router-dom";
 
 import { Board } from "../../entities/";
 import { useFetchColumnsHook } from "../../hooks";
-import { Page } from "../../components";
+import {Page, LoadingPage} from "../../components";
 import {useBoard} from "../../contexts/BoardContext";
 
 const KanbanBoard = () => {
@@ -14,13 +13,13 @@ const KanbanBoard = () => {
 
   setBoardId(id);
 
+  if (loading) {
+    return <LoadingPage />
+  }
+
   return (
     <Page>
-      {loading ? (
-        <Loader active inline="centered" />
-      ) : (
-        <Board boardId={id} columns={columns} columnsRefetch={refetch} />
-      )}
+      <Board boardId={id} columns={columns} columnsRefetch={refetch} />
     </Page>
   );
 };

@@ -8,7 +8,7 @@ const CreateColumn = ({ boardId, onSuccess }) => {
   const [columnName, setColumnName] = useState("");
 
   const handleSubmit = async () => {
-    const response = await createColumn(boardId, { name: columnName });
+    const response = await createColumn(boardId, { title: columnName });
 
     if (response.status === 201) {
       setModalOpen(false);

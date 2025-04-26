@@ -11,7 +11,7 @@ const CreateBoardModal = ({ onSuccess }) => {
   const [boardName, setBoardName] = useState("");
 
   const handleSubmit = async () => {
-    const response = await createBoard({ name: boardName });
+    const response = await createBoard({ title: boardName });
 
     if (response.status === 201) {
       setModalOpen(false);

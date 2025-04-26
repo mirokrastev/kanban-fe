@@ -1,7 +1,9 @@
 import { useState } from "react";
-import styles from "./styles.module.css";
-import { createTask } from "./sdk";
 import { toast } from "react-toastify";
+
+import { createTask } from "./sdk";
+
+import styles from "./styles.module.css";
 
 const CreateTask = ({ columnId, onSuccess }) => {
   const [isInputVisible, setIsInputVisible] = useState(false);
@@ -10,7 +12,7 @@ const CreateTask = ({ columnId, onSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await createTask({ name: taskTitle, column_id: columnId });
+    const response = await createTask({ title: taskTitle, column_id: columnId });
 
     if (response.status === 201) {
       setIsInputVisible(false);

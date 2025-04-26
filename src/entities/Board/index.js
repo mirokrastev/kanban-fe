@@ -2,6 +2,7 @@ import { Header } from "semantic-ui-react";
 
 import Column from "../Column";
 import CreateColumn from "../Column/CreateColumn";
+
 import styles from "./styles.module.css";
 
 const Board = ({ boardId, columns, columnsRefetch }) => {
@@ -14,9 +15,7 @@ const Board = ({ boardId, columns, columnsRefetch }) => {
         {columns.map((column) => (
           <Column
             key={column.id}
-            columnId={column.id}
-            title={column.name}
-            tasks={column.cards}
+            column={column}
             refetchColumns={columnsRefetch}
           />
         ))}

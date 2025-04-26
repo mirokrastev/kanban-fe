@@ -1,9 +1,9 @@
 import {useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-import {Button, Form, Header, Loader, Segment} from "semantic-ui-react";
+import {Button, Form, Header, Segment} from "semantic-ui-react";
 import {toast} from "react-toastify";
 
-import {Page} from "../../../components";
+import {LoadingPage, Page} from "../../../components";
 import {useFetchCardHook} from "../../../hooks";
 import {cardEdit} from "./sdk";
 
@@ -34,11 +34,7 @@ const CardEdit = () => {
   };
 
   if (loading) {
-    return (
-      <Page style={{ width: "25%" }}>
-        <Loader active inline="centered" />
-      </Page>
-    );
+    return <LoadingPage />
   }
 
   return (
@@ -47,9 +43,9 @@ const CardEdit = () => {
       <Segment>
         <Form onSubmit={handleSubmit}>
           <Form.Input
-            label="Name"
-            name="name"
-            value={card.name}
+            label="Title"
+            name="title"
+            value={card.title}
             onChange={handleInputChange}
             required
           />

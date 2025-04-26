@@ -12,7 +12,7 @@ const Navbar = () => {
   const { boardId, setBoardId } = useBoard();
 
   const handleNavigation = () => {
-    if (location.pathname.startsWith("/boards/")) {
+    if (location.pathname.startsWith("/boards/") || !boardId) {
       navigate("/boards/");
     } else {
       navigate(`/boards/${boardId}`);
