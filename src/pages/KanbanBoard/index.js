@@ -2,8 +2,8 @@ import { useParams } from "react-router-dom";
 
 import { Board } from "../../entities/";
 import { useFetchColumnsHook } from "../../hooks";
-import {Page, LoadingPage} from "../../components";
-import {useBoard} from "../../contexts/BoardContext";
+import { Page, LoadingPage } from "../../components";
+import { useBoard } from "../../contexts/BoardContext";
 
 const KanbanBoard = () => {
   const { id } = useParams();
@@ -14,7 +14,7 @@ const KanbanBoard = () => {
   setBoardId(id);
 
   if (loading) {
-    return <LoadingPage />
+    return <LoadingPage />;
   }
 
   return (

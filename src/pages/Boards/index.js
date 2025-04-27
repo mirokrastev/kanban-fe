@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { CreateBoardModal, DeleteBoardModal } from "./components";
 import { boardsList } from "./sdk";
 
-import {Dropdown, Header} from "semantic-ui-react";
-import {Page, LoadingPage} from "../../components";
-import {useBoard} from "../../contexts/BoardContext";
+import { Dropdown, Header } from "semantic-ui-react";
+import { Page, LoadingPage } from "../../components";
+import { useBoard } from "../../contexts/BoardContext";
 import EditBoardModal from "./components/EditBoardModal";
 
 import styles from "./styles.module.css";
@@ -32,10 +32,10 @@ const Boards = () => {
   const handleBoardClick = (boardId) => {
     setBoardId(boardId);
     navigate(`/boards/${boardId}`);
-  }
+  };
 
   if (isLoading) {
-    return <LoadingPage />
+    return <LoadingPage />;
   }
 
   return (

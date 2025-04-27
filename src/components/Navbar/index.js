@@ -1,8 +1,8 @@
-import {useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Button, Header, Menu } from "semantic-ui-react";
 
 import { useAuth } from "../../contexts/AuthContext";
-import {useBoard} from "../../contexts/BoardContext";
+import { useBoard } from "../../contexts/BoardContext";
 
 const Navbar = () => {
   const navigate = useNavigate();

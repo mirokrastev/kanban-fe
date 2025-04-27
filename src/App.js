@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "./contexts/AuthContext";
 import Navbar from "./components/Navbar";
 import AppRoutes from "./config/routes";
-import {BoardProvider} from "./contexts/BoardContext";
+import { BoardProvider } from "./contexts/BoardContext";
 
 function App() {
   return (
@@ -13,7 +13,11 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <AppRoutes />
-          <ToastContainer closeOnClick closeButton={false} pauseOnHover={false} />
+          <ToastContainer
+            closeOnClick
+            closeButton={false}
+            pauseOnHover={false}
+          />
         </BrowserRouter>
       </BoardProvider>
     </AuthProvider>

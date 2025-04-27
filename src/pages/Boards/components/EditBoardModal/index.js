@@ -34,13 +34,7 @@ const EditBoardModal = ({ board, onSuccess }) => {
       open={modalOpen}
       onClose={() => setModalOpen(false)}
       size="mini"
-      trigger={
-        <div
-          onClick={() => setModalOpen(true)}
-        >
-          Edit
-        </div>
-      }
+      trigger={<div onClick={() => setModalOpen(true)}>Edit</div>}
     >
       <Modal.Header>Edit Board</Modal.Header>
       <Modal.Content>

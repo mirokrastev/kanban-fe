@@ -1,4 +1,4 @@
-.task {
+.card {
   background-color: white;
   border-radius: 4px;
   padding: 12px;
@@ -8,6 +8,6 @@
   word-wrap: break-word;
 }
 
-.task:hover {
+.card:hover {
   transform: translateY(-2px);
 }

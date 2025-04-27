@@ -1,22 +1,25 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-import { createTask } from "./sdk";
+import { createCard } from "./sdk";
 
 import styles from "./styles.module.css";
 
-const CreateTask = ({ columnId, onSuccess }) => {
+const CreateCard = ({ columnId, onSuccess }) => {
   const [isInputVisible, setIsInputVisible] = useState(false);
-  const [taskTitle, setTaskTitle] = useState("");
+  const [cardTitle, setCardTitle] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await createTask({ title: taskTitle, column_id: columnId });
+    const response = await createCard({
+      title: cardTitle,
+      column_id: columnId,
+    });
 
     if (response.status === 201) {
       setIsInputVisible(false);
-      setTaskTitle("");
+      setCardTitle("");
       onSuccess();
     } else {
       const error = await response.json();
@@ -36,13 +39,13 @@ const CreateTask = ({ columnId, onSuccess }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={styles.createTaskForm}>
+    <form onSubmit={handleSubmit} className={styles.createCardForm}>
       <input
         type="text"
-        value={taskTitle}
-        onChange={(e) => setTaskTitle(e.target.value)}
+        value={cardTitle}
+        onChange={(e) => setCardTitle(e.target.value)}
         placeholder="Enter a title for this card..."
-        className={styles.taskInput}
+        className={styles.cardInput}
         autoFocus
       />
       <div className={styles.formActions}>
@@ -54,7 +57,7 @@ const CreateTask = ({ columnId, onSuccess }) => {
           className={styles.cancelButton}
           onClick={() => {
             setIsInputVisible(false);
-            setTaskTitle("");
+            setCardTitle("");
           }}
         >
           ×
@@ -64,4 +67,4 @@ const CreateTask = ({ columnId, onSuccess }) => {
   );
 };
 
-export default CreateTask;
+export default CreateCard;

@@ -1,7 +1,7 @@
-import {useCallback, useEffect, useState} from "react";
-import {toast} from "react-toastify";
+import { useCallback, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
-import {cardDetail} from "./sdk";
+import { cardDetail } from "./sdk";
 
 const useFetchCardHook = (id) => {
   const [card, setCard] = useState(null);

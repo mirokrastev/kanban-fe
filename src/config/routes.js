@@ -1,7 +1,14 @@
-import {useRoutes, Navigate} from "react-router-dom";
+import { useRoutes, Navigate } from "react-router-dom";
 
 import { PrivateRoute } from "../components";
-import { KanbanBoard, Login, Register, Boards, CardDetail, CardEdit } from "../pages";
+import {
+  KanbanBoard,
+  Login,
+  Register,
+  Boards,
+  CardDetail,
+  CardEdit,
+} from "../pages";
 
 const routes = [
   {

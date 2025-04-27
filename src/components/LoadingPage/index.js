@@ -1,4 +1,4 @@
-import {Header, Loader} from "semantic-ui-react";
+import { Header, Loader } from "semantic-ui-react";
 import Page from "../../components/Page";
 
 const LoadingPage = ({ title }) => {
@@ -8,6 +8,6 @@ const LoadingPage = ({ title }) => {
       <Loader active inline="centered" />
     </Page>
   );
-}
+};
 
 export default LoadingPage;

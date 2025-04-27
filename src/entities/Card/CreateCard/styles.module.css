@@ -15,13 +15,13 @@
   color: #172b4d;
 }
 
-.createTaskForm {
+.createCardForm {
   padding: 8px;
   background-color: #f4f5f7;
   border-radius: 3px;
 }
 
-.taskInput {
+.cardInput {
   width: 100%;
   padding: 8px;
   border: none;
@@ -31,7 +31,7 @@
   font-size: 14px;
 }
 
-.taskInput:focus {
+.cardInput:focus {
   outline: none;
   box-shadow: 0 0 0 2px #0079bf;
 }

@@ -4,4 +4,4 @@ export const cardDelete = async (id) => {
   const url = `cards/${id}/`;
 
   return await _delete(url);
-}
+};

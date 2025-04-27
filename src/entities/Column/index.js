@@ -1,12 +1,13 @@
-import {Dropdown, Input} from "semantic-ui-react";
+import { useState } from "react";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import { Dropdown, Input } from "semantic-ui-react";
 
-import Task from "../Task";
-import CreateTask from "../Task/CreateTask";
+import Card from "../Card";
+import CreateCard from "../Card/CreateCard";
 import DeleteColumn from "./DeleteColumn";
 
-import {useState} from "react";
-import {updateColumn} from "./sdk";
-import {useBoard} from "../../contexts/BoardContext";
+import { updateCardOrder, updateColumn } from "./sdk";
+import { useBoard } from "../../contexts/BoardContext";
 
 import styles from "./styles.module.css";
 
@@ -34,6 +35,23 @@ const Column = ({ column, refetchColumns }) => {
     } else if (e.key === "Escape") {
       setIsEditing(false);
       setNewTitle(column.title);
+    }
+  };
+
+  const handleDragEnd = async (result) => {
+    if (!result.destination) return;
+    const { source, destination } = result;
+
+    if (source.index !== destination.index) {
+      const updatedCards = Array.from(column.cards);
+      const [movedCard] = updatedCards.splice(source.index, 1);
+      updatedCards.splice(destination.index, 0, movedCard);
+
+      await updateCardOrder(boardId, column.id, {
+        ids: updatedCards.map((el) => el.id),
+      });
+
+      refetchColumns();
     }
   };
 
@@ -70,15 +88,37 @@ const Column = ({ column, refetchColumns }) => {
           </Dropdown.Menu>
         </Dropdown>
       </div>
-      <div className={styles.content}>
-        {column.cards.map((card) => (
-          <Task key={card.id} task={card} />
-        ))}
-        <CreateTask
-          columnId={column.id}
-          onSuccess={refetchColumns}
-        />
-      </div>
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <Droppable droppableId={column.id.toString()}>
+          {(provided) => (
+            <div
+              className={styles.content}
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {column.cards.map((card, index) => (
+                <Draggable
+                  key={card.id.toString()}
+                  draggableId={card.id.toString()}
+                  index={index}
+                >
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      <Card card={card} />
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+      <CreateCard columnId={column.id} onSuccess={refetchColumns} />
     </div>
   );
 };

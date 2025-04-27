@@ -1,11 +1,11 @@
-import {useState} from "react";
-import {useNavigate, useParams} from "react-router-dom";
-import {Button, Form, Header, Segment} from "semantic-ui-react";
-import {toast} from "react-toastify";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { Button, Form, Header, Segment } from "semantic-ui-react";
+import { toast } from "react-toastify";
 
-import {LoadingPage, Page} from "../../../components";
-import {useFetchCardHook} from "../../../hooks";
-import {cardEdit} from "./sdk";
+import { LoadingPage, Page } from "../../../components";
+import { useFetchCardHook } from "../../../hooks";
+import { cardEdit } from "./sdk";
 
 const CardEdit = () => {
   const { id } = useParams();
@@ -34,7 +34,7 @@ const CardEdit = () => {
   };
 
   if (loading) {
-    return <LoadingPage />
+    return <LoadingPage />;
   }
 
   return (

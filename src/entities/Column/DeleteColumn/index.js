@@ -1,9 +1,9 @@
-import {useState} from "react";
-import {Button, Icon, Modal} from "semantic-ui-react";
-import {toast} from "react-toastify";
+import { useState } from "react";
+import { Button, Icon, Modal } from "semantic-ui-react";
+import { toast } from "react-toastify";
 
-import {deleteColumn} from "./sdk";
-import {useBoard} from "../../../contexts/BoardContext";
+import { deleteColumn } from "./sdk";
+import { useBoard } from "../../../contexts/BoardContext";
 
 export const DeleteColumn = ({ column, onSuccess }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -37,7 +37,10 @@ export const DeleteColumn = ({ column, onSuccess }) => {
     >
       <Modal.Header icon="trash" content="Delete Column?" />
       <Modal.Content>
-        <p>Are you sure you want to delete this column? This action cannot be undone.</p>
+        <p>
+          Are you sure you want to delete this column? This action cannot be
+          undone.
+        </p>
       </Modal.Content>
       <Modal.Actions>
         <Button color="grey" onClick={() => setModalOpen(false)}>

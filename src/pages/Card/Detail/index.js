@@ -1,11 +1,11 @@
-import {useNavigate, useParams} from "react-router-dom";
-import {Button, Header, Segment} from "semantic-ui-react";
-import {toast} from "react-toastify";
+import { useNavigate, useParams } from "react-router-dom";
+import { Button, Header, Segment } from "semantic-ui-react";
+import { toast } from "react-toastify";
 
-import {Page, LoadingPage} from "../../../components";
-import {useFetchCardHook} from "../../../hooks";
-import {useBoard} from "../../../contexts/BoardContext";
-import {cardDelete} from "./sdk";
+import { Page, LoadingPage } from "../../../components";
+import { useFetchCardHook } from "../../../hooks";
+import { useBoard } from "../../../contexts/BoardContext";
+import { cardDelete } from "./sdk";
 
 const CardDetail = () => {
   const { id } = useParams();
@@ -27,12 +27,14 @@ const CardDetail = () => {
   };
 
   if (loading) {
-    return <LoadingPage />
+    return <LoadingPage />;
   }
 
   return (
     <Page style={{ width: "25%" }}>
-      <Header as="h1" style={{ wordWrap: "break-word" }}>{card.title}</Header>
+      <Header as="h1" style={{ wordWrap: "break-word" }}>
+        {card.title}
+      </Header>
       <Segment>
         <p>
           <strong>Description:</strong> {card.description || "N/A"}
@@ -47,7 +49,7 @@ const CardDetail = () => {
         </div>
       </Segment>
     </Page>
-  )
+  );
 };
 
 export default CardDetail;
