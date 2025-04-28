@@ -14,13 +14,15 @@ const Register = () => {
 
   const handleSubmit = async (data, actions) => {
     const { setErrors } = actions;
-
     const response = await registerSdk(data);
+
     if (response.ok) {
       toast.success("Account created successfully");
       navigate("/login");
+    } else {
+      const errors = await response.json();
+      setErrors(errors);
     }
-    setErrors(response);
   };
 
   const initialValues = {

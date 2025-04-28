@@ -1,6 +1,6 @@
 import { useRoutes, Navigate } from "react-router-dom";
 
-import { PrivateRoute } from "../components";
+import { PrivateRoute, PublicGuard } from "../components";
 import {
   KanbanBoard,
   Login,
@@ -33,11 +33,11 @@ const routes = [
   },
   {
     path: "/login",
-    element: <Login />,
+    element: <PublicGuard element={<Login />} />,
   },
   {
     path: "/register",
-    element: <Register />,
+    element: <PublicGuard element={<Register />} />,
   },
 ];
 
