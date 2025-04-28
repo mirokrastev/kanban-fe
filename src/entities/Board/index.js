@@ -30,7 +30,7 @@ const Board = ({ boardId, columns, columnsRefetch }) => {
     <DragDropContext onDragEnd={handleDragEnd}>
       <Header as="h1">Kanban Dashboard</Header>
 
-      <Droppable droppableId="board" direction="horizontal" type="COLUMN">
+      <Droppable droppableId="board" direction="horizontal">
         {(provided) => (
           <div
             className={styles.board}
