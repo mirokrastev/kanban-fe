@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Modal, Button, Form } from "semantic-ui-react";
+import { Modal, Button, Form, Dropdown } from "semantic-ui-react";
 import { toast } from "react-toastify";
 
 import { updateBoard } from "./sdk";
@@ -34,7 +34,11 @@ const EditBoardModal = ({ board, onSuccess }) => {
       open={modalOpen}
       onClose={() => setModalOpen(false)}
       size="mini"
-      trigger={<div onClick={() => setModalOpen(true)}>Edit</div>}
+      trigger={
+        <Dropdown.Item onClick={() => setModalOpen(true)}>
+          <div>Edit</div>
+        </Dropdown.Item>
+      }
     >
       <Modal.Header>Edit Board</Modal.Header>
       <Modal.Content>

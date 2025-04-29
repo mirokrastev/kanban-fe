@@ -1,4 +1,4 @@
-import { Button, Header, Icon, Modal } from "semantic-ui-react";
+import { Button, Header, Icon, Modal, Dropdown } from "semantic-ui-react";
 import { deleteBoard } from "./sdk";
 import { toast } from "react-toastify";
 import { useState } from "react";
@@ -24,12 +24,9 @@ const DeleteBoardModal = ({ board, onSuccess }) => {
       size="mini"
       closeIcon
       trigger={
-        <div
-          style={{ color: "red", cursor: "pointer" }}
-          onClick={() => setModalOpen(true)}
-        >
-          Delete
-        </div>
+        <Dropdown.Item onClick={() => setModalOpen(true)}>
+          <div style={{ color: "red", cursor: "pointer" }}>Delete</div>
+        </Dropdown.Item>
       }
     >
       <Header icon="trash" content="Delete Board?" />

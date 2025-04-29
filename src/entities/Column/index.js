@@ -82,9 +82,7 @@ const Column = ({ column, refetchColumns }) => {
           pointing="top right"
         >
           <Dropdown.Menu>
-            <Dropdown.Item>
-              <DeleteColumn column={column} onSuccess={refetchColumns} />
-            </Dropdown.Item>
+            <DeleteColumn column={column} onSuccess={refetchColumns} />
           </Dropdown.Menu>
         </Dropdown>
       </div>

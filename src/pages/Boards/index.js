@@ -56,12 +56,8 @@ const Boards = () => {
                 pointing="top right"
               >
                 <Dropdown.Menu>
-                  <Dropdown.Item>
-                    <EditBoardModal board={board} onSuccess={fetchBoards} />
-                  </Dropdown.Item>
-                  <Dropdown.Item>
-                    <DeleteBoardModal board={board} onSuccess={fetchBoards} />
-                  </Dropdown.Item>
+                  <EditBoardModal board={board} onSuccess={fetchBoards} />
+                  <DeleteBoardModal board={board} onSuccess={fetchBoards} />
                 </Dropdown.Menu>
               </Dropdown>
             </div>

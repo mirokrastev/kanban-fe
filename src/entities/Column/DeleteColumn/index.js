@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Icon, Modal } from "semantic-ui-react";
+import { Button, Icon, Modal, Dropdown } from "semantic-ui-react";
 import { toast } from "react-toastify";
 
 import { deleteColumn } from "./sdk";
@@ -27,12 +27,9 @@ export const DeleteColumn = ({ column, onSuccess }) => {
       size="mini"
       closeIcon
       trigger={
-        <div
-          style={{ color: "red", cursor: "pointer" }}
-          onClick={() => setModalOpen(true)}
-        >
-          Delete
-        </div>
+        <Dropdown.Item onClick={() => setModalOpen(true)}>
+          <div style={{ color: "red", cursor: "pointer" }}>Delete</div>
+        </Dropdown.Item>
       }
     >
       <Modal.Header icon="trash" content="Delete Column?" />
