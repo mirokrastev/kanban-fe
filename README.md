@@ -7,9 +7,6 @@ Front-end for the Kanban board application. It interacts with the Kanban API to 
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
-- [Usage](#usage)
-- [API Integration](#api-integration)
-- [License](#license)
 
 ## Features
 
